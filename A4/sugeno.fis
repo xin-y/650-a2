@@ -1,0 +1,56 @@
+[System]
+Name='sugeno'
+Type='sugeno'
+Version=2.0
+NumInputs=2
+NumOutputs=2
+NumRules=9
+AndMethod='prod'
+OrMethod='probor'
+ImpMethod='prod'
+AggMethod='sum'
+DefuzzMethod='wtsum'
+
+[Input1]
+Name='distance'
+Range=[0 10]
+NumMFs=3
+MF1='Near':'trapmf',[-5 0 2.5 5]
+MF2='Far':'trimf',[2.5 5 7.5]
+MF3='VeryFar':'trapmf',[5 7.5 10 12.5]
+
+[Input2]
+Name='angle'
+Range=[0 90]
+NumMFs=3
+MF1='Small':'trapmf',[-25 0 20 45]
+MF2='Medium':'trimf',[20 45 70]
+MF3='Large':'trapmf',[45 70 90 115]
+
+[Output1]
+Name='Speed'
+Range=[0 1]
+NumMFs=4
+MF1='SlowSpeed=0.5':'constant',[0.5]
+MF2='MediumSpeed=2':'constant',[2]
+MF3='FastSpeed=3':'constant',[3]
+MF4='MaximumSpeed=4.5':'constant',[4.5]
+
+[Output2]
+Name='SteeringTurn'
+Range=[0 1]
+NumMFs=3
+MF1='MildTurn=10':'constant',[10]
+MF2='SharpTurn=45':'constant',[45]
+MF3='VerySharpTurn=80':'constant',[80]
+
+[Rules]
+1 1, 1 3 (1) : 1
+1 2, 1 2 (1) : 1
+1 3, 2 2 (1) : 1
+2 1, 2 2 (1) : 1
+2 2, 2 1 (1) : 1
+2 3, 3 1 (1) : 1
+3 1, 3 1 (1) : 1
+3 2, 4 1 (1) : 1
+3 3, 4 1 (1) : 1
