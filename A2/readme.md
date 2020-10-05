@@ -1,2 +1,3 @@
 
-Q2 defines a class of RBF Neural Network
+Q3: RBF Network Implementation
+Q4: SOM Implementation
